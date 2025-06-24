@@ -12,6 +12,14 @@ console.log(seo);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+      default-src 'self';
+      img-src 'self' 'http://45.79.101.19:1344'
+      "
+    />
+
     <SEO title={seo?.title} />
   </head>
   <body>
