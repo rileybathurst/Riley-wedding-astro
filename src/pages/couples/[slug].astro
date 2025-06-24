@@ -1,0 +1,71 @@
+---
+// import qs from "qs";
+import fetchApi from "../../lib/strapi";
+import Wrapper from "../../components/wrapper.astro";
+import Header from "../../components/header.astro";
+import Footer from "../../components/footer.astro";
+import Breadcrumbs from "../../components/breadcrumbs.astro";
+import { Image } from "astro:assets";
+
+type CoupleTypes = {
+  bride: string;
+  groom: string;
+  slug: string;
+  hero: {
+    url: string;
+    alternativeText: string;
+  };
+};
+export async function getStaticPaths() {
+  const couples = await fetchApi<CoupleTypes[]>({
+    endpoint: "couples",
+    populate: {
+      hero: true,
+    },
+  });
+
+  return couples.map((couple) => ({
+    params: { slug: couple.slug },
+    props: couple,
+  }));
+}
+const couple = Astro.props;
+
+// * this still might need more but for now its working
+// http://45.79.101.19:1347/api/couples?populate=hero
+// console.log(couple);
+
+// qs.stringify({ a: 'b' }), 'a=b'
+
+/* const check = {
+  populate: {
+    hero: true,
+  },
+};
+console.log(check);
+console.log(qs.stringify(check, { encode: false })); */
+---
+
+<Wrapper
+  seo={{
+    title: `${couple.bride} & ${couple.groom}`,
+  }}
+>
+  <Header />
+  <main class="pelican">
+    <Image
+      src=`${import.meta.env.STRAPI_URL}${couple.hero.url}`
+      inferSize={true}
+      alt={couple.hero.alternativeText}
+    />
+
+    {couple.bride} & {couple.groom}
+  </main>
+  <Breadcrumbs
+    items={[
+      { label: "Couples", href: "/couples" },
+      { label: `${couple.bride} & ${couple.groom}` },
+    ]}
+  />
+  <Footer />
+</Wrapper>

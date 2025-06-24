@@ -1,0 +1,9 @@
+/*------------------------------------*/
+/* #PANELS */
+/*------------------------------------*/
+
+.cloud {
+  background-color: var(--neutral-100);
+  box-shadow: 0 0 0 100vmax var(--neutral-100);
+  clip-path: inset(0 -100vmax);
+}

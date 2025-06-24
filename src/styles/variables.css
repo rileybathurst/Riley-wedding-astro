@@ -1,0 +1,24 @@
+/*------------------------------------*/
+/* #VARIABLES */
+/*------------------------------------*/
+
+:root {
+  --neutral-100: #f9f9f9;
+  --neutral-200: #ebebeb;
+  --neutral-300: #d9d9d9;
+  --neutral-400: #bfbfbf;
+  --neutral-500: #404040;
+  --neutral-600: #262626;
+  --neutral-700: #121212; /* oklch(0.1822 0 0) */
+  --neutral-800: #050505; /* oklch(0.115 0 0) */
+
+  /*------------------*/
+  /* #WIDTHS */
+  /* https://en.wikipedia.org/wiki/Largest_living_flying_birds_by_wingspan */
+  /*------------------*/
+  --vulture: 10rem;
+  --stork: 18rem;
+  --condor: 30rem;
+  --pelican: 49rem;
+  --albatross: 79rem;
+}

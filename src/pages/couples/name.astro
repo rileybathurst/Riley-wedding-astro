@@ -1,0 +1,37 @@
+---
+import Wrapper from "../../components/wrapper.astro";
+import fetchApi from "../../lib/strapi";
+import Header from "../../components/header.astro";
+import Footer from "../../components/footer.astro";
+import type { CoupleCardTypes } from "../../types/couple-card-types";
+import Breadcrumbs from "../../components/breadcrumbs.astro";
+
+const couples = await fetchApi<CoupleCardTypes[]>({
+  endpoint: "couples",
+});
+---
+
+<Wrapper>
+  <Header />
+  <h3>Missing Couples</h3>
+  <p>Looks like this couple eloped.</p>
+  {
+    couples.map((couple) => (
+      <div>
+        <h2>
+          <a href={`/couples/${couple.slug}`}>
+            {couple.bride} & {couple.groom}
+          </a>
+        </h2>
+      </div>
+    ))
+  }
+  <Breadcrumbs
+    items={[
+      { label: "Home", href: "/" },
+      { label: "Couples", href: "/couples" },
+      { label: "Missing Couples", href: "/couples/missing" },
+    ]}
+  />
+  <Footer />
+</Wrapper>

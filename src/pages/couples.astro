@@ -1,24 +1,31 @@
 ---
-import "../styles/app.css";
-import fetchApi from "../lib/strapi";
-import Deck from "../components/deck.astro";
 import Wrapper from "../components/wrapper.astro";
 import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
+import fetchApi from "../lib/strapi";
 import type { CoupleCardTypes } from "../types/couple-card-types";
 
 const couples = await fetchApi<CoupleCardTypes[]>({
-  endpoint: "couples", // the content type to fetch
+  endpoint: "couples",
 });
 ---
 
-<Wrapper>
+<Wrapper
+  seo={{
+    title: "Couples",
+  }}
+>
   <Header />
-  <main>
-    <h3>
-      <a href="/couples">Couples</a>
-    </h3>
-    <Deck cards={couples} />
-  </main>
+  {
+    couples.map((couple) => (
+      <div>
+        <h2>
+          <a href={`/couples/${couple.slug}`}>
+            {couple.bride} & {couple.groom}
+          </a>
+        </h2>
+      </div>
+    ))
+  }
   <Footer />
 </Wrapper>

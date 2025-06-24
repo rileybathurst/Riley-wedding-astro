@@ -1,0 +1,31 @@
+/*------------------------------------*/
+/* #LAYOUT */
+/*------------------------------------*/
+
+.vulture,
+.stork,
+.condor,
+.pelican,
+.albatross {
+  margin-inline: auto;
+}
+
+.vulture {
+  width: var(--vulture);
+}
+
+.stork {
+  width: var(--stork);
+}
+
+.condor {
+  width: var(--condor);
+}
+
+.pelican {
+  width: var(--pelican);
+}
+
+.albatross {
+  width: var(--albatross);
+}

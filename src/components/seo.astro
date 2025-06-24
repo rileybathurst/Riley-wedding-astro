@@ -1,0 +1,19 @@
+---
+import fetchApi from "../lib/strapi";
+import type { metaTypes } from "../types/meta-types";
+
+const meta = await fetchApi<metaTypes>({
+  endpoint: "meta", // the content type to fetch
+});
+
+const { title } = Astro.props;
+// console.log(title);
+---
+
+<title>
+  {
+    title
+      ? `${title} | ${meta.name} ${meta.title}`
+      : `${meta.name} ${meta.title}`
+  }
+</title>

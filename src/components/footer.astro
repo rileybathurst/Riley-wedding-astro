@@ -1,0 +1,18 @@
+---
+import fetchApi from "../lib/strapi";
+import type { metaTypes } from "../types/meta-types";
+
+const meta = await fetchApi<metaTypes>({
+  endpoint: "meta", // the content type to fetch
+});
+---
+
+<footer class="condor">
+  <hr />
+  <p>
+    <a href="/">{meta.name} {meta.title}</a>
+  </p>
+  <a href={`mailto:${meta.email}@${meta.url}`}>
+    {meta.email}@{meta.url}
+  </a>
+</footer>

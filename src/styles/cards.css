@@ -1,0 +1,5 @@
+.deck {
+  .card {
+    background-color: var(--neutral-100);
+  }
+}

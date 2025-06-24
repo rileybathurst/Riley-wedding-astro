@@ -1,0 +1,17 @@
+---
+const { items } = Astro.props;
+type BreadcrumbTypes = {
+  label: string;
+  href?: string /* the last doesnt have a link */;
+};
+---
+
+<ol class="breadcrumbs">
+  {
+    items.map((item: BreadcrumbTypes) => (
+      <li>
+        <a href={item.href}>{item.label}</a>
+      </li>
+    ))
+  }
+</ol>

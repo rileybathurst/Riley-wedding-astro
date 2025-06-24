@@ -1,0 +1,18 @@
+---
+import Card from "./card.astro";
+const { cards } = Astro.props;
+import type { CoupleCardTypes } from "../types/couple-card-types";
+---
+
+<section class="deck cloud pelican">
+  {
+    cards.map((card: CoupleCardTypes) => (
+      <Card
+        id={card.id}
+        title={card.bride + " & " + card.groom}
+        excerpt={card.excerpt}
+        link={`/couples/${card.slug}`}
+      />
+    ))
+  }
+</section>
