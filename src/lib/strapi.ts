@@ -28,7 +28,7 @@ export default async function fetchApi<T>({
     }`
   );
 
-  // console.log(url.href);
+  console.log(url.href);
 
   if (query) {
     Object.entries(query).forEach(([key, value]) => {

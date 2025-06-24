@@ -1,9 +1,9 @@
 ---
 import "../styles/app.css";
-import SEO from "../components/seo.astro";
-const { seo } = Astro.props;
+// import SEO from "../components/seo.astro";
+// const { seo } = Astro.props;
 
-console.log(seo);
+// console.log(seo);
 ---
 
 <html lang="en">
@@ -12,15 +12,16 @@ console.log(seo);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <meta
+    <!--     <meta
       http-equiv="Content-Security-Policy"
       content="
       default-src 'self';
-      img-src 'self' http://45.79.101.19
+      img-src 'self' 45.79.101.19;
+      style-src-elem 'self' googleapis.com 'sha256-xBFDvEk83eOkqNVxpc0/wO9bTwQdUdkHxBkT6EN/1AY=';
       "
-    />
+    /> -->
 
-    <SEO title={seo?.title} />
+    <!-- <SEO title={seo?.title} /> -->
   </head>
   <body>
     <slot />
