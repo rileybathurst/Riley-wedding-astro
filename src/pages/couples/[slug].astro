@@ -1,5 +1,5 @@
 ---
-// import qs from "qs";
+// TODO: collaborator
 import fetchApi from "../../lib/strapi";
 import Wrapper from "../../components/wrapper.astro";
 import Header from "../../components/header.astro";
@@ -25,8 +25,6 @@ export async function getStaticPaths() {
     endpoint: "couples",
     populate: {
       hero: true,
-      // title: true,
-      // mux: true, // assuming mux is a boolean field in the couple content type
     },
   });
 
@@ -51,7 +49,7 @@ const couple = Astro.props;
 console.log(check);
 console.log(qs.stringify(check, { encode: false })); */
 
-console.log(couple);
+// console.log(couple);
 ---
 
 <Wrapper
