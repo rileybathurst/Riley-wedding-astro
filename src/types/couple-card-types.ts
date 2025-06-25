@@ -4,4 +4,10 @@ export type CoupleCardTypes = {
   groom: string;
   slug: string;
   excerpt: string;
+  image: {
+    url: string;
+    alternativeText: string;
+    width: number;
+    height: number;
+  };
 };

@@ -4,9 +4,13 @@ import Header from "../components/header.astro";
 import Footer from "../components/footer.astro";
 import fetchApi from "../lib/strapi";
 import type { CoupleCardTypes } from "../types/couple-card-types";
+import Deck from "../components/deck.astro";
 
 const couples = await fetchApi<CoupleCardTypes[]>({
   endpoint: "couples",
+  populate: {
+    hero: true,
+  },
 });
 ---
 
@@ -16,16 +20,6 @@ const couples = await fetchApi<CoupleCardTypes[]>({
   }}
 >
   <Header />
-  {
-    couples.map((couple) => (
-      <div>
-        <h2>
-          <a href={`/couples/${couple.slug}`}>
-            {couple.bride} & {couple.groom}
-          </a>
-        </h2>
-      </div>
-    ))
-  }
+  <Deck cards={couples} />
   <Footer />
 </Wrapper>

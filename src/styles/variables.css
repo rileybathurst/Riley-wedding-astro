@@ -21,4 +21,11 @@
   --condor: 30rem;
   --pelican: 49rem;
   --albatross: 79rem;
+
+  /*------------------------------------*/
+  /* #TYPOGRAPHY */
+  /*------------------------------------*/
+  --font-serif: "Bodoni Moda Variable", serif;
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }

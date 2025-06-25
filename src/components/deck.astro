@@ -12,6 +12,10 @@ import type { CoupleCardTypes } from "../types/couple-card-types";
         title={card.bride + " & " + card.groom}
         excerpt={card.excerpt}
         link={`/couples/${card.slug}`}
+        image={card.hero?.url || ""}
+        imageAlt={card.hero?.alternativeText || ""}
+        imageWidth={card.hero?.width || 1200}
+        imageHeight={card.hero?.height || 600}
       />
     ))
   }

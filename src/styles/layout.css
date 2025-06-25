@@ -6,7 +6,8 @@
 .stork,
 .condor,
 .pelican,
-.albatross {
+.albatross,
+.deck {
   margin-inline: auto;
 }
 
@@ -22,7 +23,8 @@
   width: var(--condor);
 }
 
-.pelican {
+.pelican,
+.deck {
   width: var(--pelican);
 }
 

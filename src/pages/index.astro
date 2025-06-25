@@ -9,13 +9,16 @@ import type { CoupleCardTypes } from "../types/couple-card-types";
 
 const couples = await fetchApi<CoupleCardTypes[]>({
   endpoint: "couples", // the content type to fetch
+  populate: {
+    hero: true, // populate the image field
+  },
 });
 ---
 
 <Wrapper>
   <Header />
   <main>
-    <h3>
+    <h3 class="condor">
       <a href="/couples">Couples</a>
     </h3>
     <Deck cards={couples} />
