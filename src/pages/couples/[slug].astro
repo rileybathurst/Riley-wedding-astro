@@ -14,6 +14,8 @@ type CoupleTypes = {
   hero: {
     url: string;
     alternativeText: string;
+    width?: number;
+    height?: number;
   };
 };
 export async function getStaticPaths() {
@@ -54,10 +56,12 @@ console.log(qs.stringify(check, { encode: false })); */
   <Header />
   <main class="pelican">
     <!-- ! oh right this was problematic becasue strapi is not always online and depending how it builds was why i went to AWS -->
+    <!-- inferSize={true} -->
     <!-- src=`${import.meta.env.STRAPI_URL}${couple.hero.url}` -->
     <Image
       src={couple.hero.url}
-      inferSize={true}
+      width={couple.hero.width || 1200}
+      height={couple.hero.height || 600}
       alt=`${couple.hero.alternativeText} | ${couple.bride}`
     />
 
