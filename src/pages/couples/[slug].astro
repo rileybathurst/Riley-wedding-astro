@@ -54,10 +54,11 @@ console.log(qs.stringify(check, { encode: false })); */
   <Header />
   <main class="pelican">
     <!-- ! oh right this was problematic becasue strapi is not always online and depending how it builds was why i went to AWS -->
+    <!-- src=`${import.meta.env.STRAPI_URL}${couple.hero.url}` -->
     <Image
-      src=`${import.meta.env.STRAPI_URL}${couple.hero.url}`
+      src={couple.hero.url}
       inferSize={true}
-      alt={couple.hero.alternativeText}
+      alt=`${couple.hero.alternativeText} | ${couple.bride}`
     />
 
     {couple.bride} & {couple.groom}
