@@ -1,0 +1,51 @@
+---
+import Wrapper from "../components/wrapper.astro";
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
+import fetchApi from "../lib/strapi";
+import {
+  BlocksRenderer,
+  type BlocksContent,
+} from "@strapi/blocks-react-renderer";
+import type { metaTypes } from "../types/meta-types";
+import { Image } from "astro:assets";
+
+type aboutTypes = {
+  bio: BlocksContent;
+};
+const about = await fetchApi<aboutTypes>({
+  endpoint: "about",
+  populate: {
+    avatar: true,
+  },
+});
+
+const meta = await fetchApi<metaTypes>({
+  endpoint: "meta", // the content type to fetch
+});
+---
+
+<Wrapper
+  seo={{
+    title: `About ${meta.name}`,
+  }}
+>
+  <Header />
+  <main>
+    <div class="condor">
+      <Image
+        src={about.avatar.url}
+        width={about.avatar.width || 1200}
+        height={about.avatar.height || 600}
+        alt={about.avatar.alternativeText}
+      />
+    </div>
+    <div class="condor">
+      <h1 class="serif">About {meta.name}</h1>
+      <!-- <h2>{meta.title}</h2> -->
+
+      <BlocksRenderer content={about?.bio} />
+    </div>
+  </main>
+  <Footer />
+</Wrapper>

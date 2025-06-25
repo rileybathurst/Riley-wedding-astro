@@ -17,6 +17,11 @@ p {
   margin: 0; /* reset then build back up */
 }
 
+p {
+  margin-block-end: 1.5rem;
+  line-height: 1.5;
+}
+
 .serif {
   font-family: var(--font-serif);
 }
