@@ -1,3 +1,10 @@
+/* TODO: this is very key but the demos are not working so I cant fix it today
+https://developer.chrome.com/docs/web-platform/view-transitions/cross-document */
+
+/* @view-transition {
+  navigation: auto;
+} */
+
 .deck {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

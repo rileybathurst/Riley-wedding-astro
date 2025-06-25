@@ -6,6 +6,7 @@ import Header from "../../components/header.astro";
 import Footer from "../../components/footer.astro";
 import Breadcrumbs from "../../components/breadcrumbs.astro";
 import { Image } from "astro:assets";
+import type { collaboratorLinkTypes } from "../../types/collaborator-link-types";
 
 type CoupleTypes = {
   bride: string;
@@ -19,12 +20,14 @@ type CoupleTypes = {
     width?: number;
     height?: number;
   };
+  collaborators?: collaboratorLinkTypes[];
 };
 export async function getStaticPaths() {
   const couples = await fetchApi<CoupleTypes[]>({
     endpoint: "couples",
     populate: {
       hero: true,
+      collaborators: true,
     },
   });
 
@@ -46,8 +49,8 @@ const couple = Astro.props;
     hero: true,
   },
 };
-console.log(check);
-console.log(qs.stringify(check, { encode: false })); */
+// console.log(check);
+// console.log(qs.stringify(check, { encode: false })); */
 
 // console.log(couple);
 ---
@@ -75,6 +78,21 @@ console.log(qs.stringify(check, { encode: false })); */
     }
 
     <h1 class="serif">{couple.title ? couple.title : `${couple.bride} & ${couple.groom}`}</h1>
+
+    <hr />
+
+    {couple.collaborators && couple.collaborators.length > 0 && (
+      <div class="collaborators">
+        <h2>Collaborators</h2>
+        <ul>
+          {couple.collaborators.map((collab) => (
+            <li key={collab.id}>
+              <a href={`/collaborators/${collab.slug}`}>{collab.name}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
   </main>
   <Breadcrumbs
     items={[

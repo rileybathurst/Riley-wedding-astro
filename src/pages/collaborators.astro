@@ -1,0 +1,35 @@
+---
+import Wrapper from "../components/wrapper.astro";
+import Header from "../components/header.astro";
+import Footer from "../components/footer.astro";
+import fetchApi from "../lib/strapi";
+import type { collaboratorLinkTypes } from "../types/collaborator-link-types";
+
+const colaborators = await fetchApi<collaboratorLinkTypes[]>({
+  endpoint: "colaborators",
+});
+---
+
+<Wrapper
+  seo={{
+    title: "Colaborators",
+  }}
+>
+  <Header />
+  <main>
+    <h1 class="serif">Colaborators</h1>
+    <hr />
+    <ul>
+      {
+        colaborators.map((colaborator) => (
+          <li>
+            <a href={`/collaborators/${colaborator.slug}`}>
+              {colaborator.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+  <Footer />
+</Wrapper>

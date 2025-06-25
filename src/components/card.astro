@@ -1,5 +1,5 @@
 ---
-const { title, excerpt, link, image, imageAlt, imageWidth, imageHeight } =
+const { title, excerpt, link, image, imageAlt, imageWidth, imageHeight, mux } =
   Astro.props;
 
 import { Image } from "astro:assets";
@@ -8,15 +8,34 @@ import { Image } from "astro:assets";
 <article class="card">
   <a href={link} class="serif">
     {
-      image ? (
+      mux && (
         <Image
-          src={image}
-          width={imageWidth || 1200}
-          height={imageHeight || 600}
-          alt={imageAlt || title}
+          src={`https://image.mux.com/${mux}/thumbnail.jpg?width=400&height=300&fit_mode=pad`}
+          width={400}
+          height={300}
+          alt={`${title} video thumbnail`}
         />
-      ) : null
+      )
     }
+
+    <!-- has a cloudinary crop -->
+    {
+      image && image.includes("/upload/")
+        ? (() => {
+            const [before, after] = image.split("/upload/");
+            const newImage = `${before}/upload/c_crop,ar_4:3/${after}`;
+            return (
+              <Image
+                src={newImage}
+                width={imageWidth || 1200}
+                height={imageHeight || 600}
+                alt={imageAlt || title}
+              />
+            );
+          })()
+        : null
+    }
+
     <h3>
       {title}
     </h3>

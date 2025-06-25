@@ -1,0 +1,62 @@
+---
+// TODO: collaborator
+import fetchApi from "../../lib/strapi";
+import Wrapper from "../../components/wrapper.astro";
+import Header from "../../components/header.astro";
+import Footer from "../../components/footer.astro";
+import Breadcrumbs from "../../components/breadcrumbs.astro";
+import Deck from "../../components/deck.astro";
+import type { CoupleCardTypes } from "../../types/couple-card-types";
+
+type collaboratorTypes = {
+  name: string;
+  slug: string;
+  couples: CoupleCardTypes[];
+};
+export async function getStaticPaths() {
+  const collaborators = await fetchApi<collaboratorTypes[]>({
+    endpoint: "collaborators",
+    populate: {
+      couples: true,
+    },
+  });
+
+  return collaborators.map((collaborator) => ({
+    params: { slug: collaborator.slug },
+    props: collaborator,
+  }));
+}
+const collaborator = Astro.props;
+---
+
+<Wrapper
+  seo={{
+    title: collaborator.name,
+  }}
+>
+  <Header />
+  <main class="pelican">
+    <h1 class="serif">{collaborator.name}</h1>
+    <p>{collaborator.excerpt}</p>
+    <p>
+      <!-- TODO: tidy up the links to remoeve the https -->
+      <a href={collaborator.website} target="_blank" noref=""
+        >{collaborator.website}</a
+      >
+    </p>
+    <hr />
+  </main>
+
+  <!-- TODO: this isnt bringing images as thats a double nested but thats fine for now -->
+  {collaborator.couples && <Deck cards={collaborator.couples} />}
+
+  <Breadcrumbs
+    items={[
+      { label: "Collaborator", href: "/collaborator" },
+      {
+        label: collaborator.name,
+      },
+    ]}
+  />
+  <Footer />
+</Wrapper>

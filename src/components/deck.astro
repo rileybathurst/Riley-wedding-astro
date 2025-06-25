@@ -16,6 +16,7 @@ import type { CoupleCardTypes } from "../types/couple-card-types";
         imageAlt={card.hero?.alternativeText || ""}
         imageWidth={card.hero?.width || 1200}
         imageHeight={card.hero?.height || 600}
+        mux={card.mux ? card.mux : null}
       />
     ))
   }
