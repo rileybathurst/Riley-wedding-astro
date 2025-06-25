@@ -6,11 +6,19 @@
   margin: 0;
 
   .card {
-    background-color: var(--neutral-100);
-    border: 1px solid var(--neutral-300);
-    border-radius: 0.5rem;
-    padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    background-color: white;
+    border: 1px solid var(--neutral-200);
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* TODO: variable */
     transition: transform 0.2s ease;
+
+    img {
+      border-radius: 0.25rem;
+    }
+
+    h3 {
+      margin: 1rem;
+    }
   }
 }

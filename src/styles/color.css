@@ -1,0 +1,20 @@
+/*------------------------------------*/
+/* #COLOR */
+/*------------------------------------*/
+
+footer {
+  background-color: var(--pine-100);
+  box-shadow: 0 0 0 100vmax var(--pine-100);
+  clip-path: inset(0 -100vmax);
+  color: var(--pine-700);
+
+  button {
+    background-color: var(--pine-400);
+    color: var(--pine-700);
+    border: 1px solid var(--pine-200);
+  }
+
+  a {
+    color: var(--pine-600);
+  }
+}

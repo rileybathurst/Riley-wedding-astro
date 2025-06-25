@@ -12,6 +12,42 @@
   --neutral-700: #121212; /* oklch(0.1822 0 0) */
   --neutral-800: #050505; /* oklch(0.115 0 0) */
 
+  --lake-100: oklch(94% 0.03 230);
+  --lake-200: oklch(93% 0.04 230);
+  --lake-300: oklch(90% 0.055 230);
+  --lake-400: oklch(83% 0.08 230);
+
+  @supports not (color: oklch(99% 0.001 230)) {
+    /* TODO: this was taken from paddle I think its all a step out */
+    --lake-100: #f5fcff;
+    --lake-200: #ddf4fe;
+    --lake-300: #b8e7f9;
+    --lake-400: #8fd4ef;
+  }
+
+  /* Sand */
+  --sand-100: oklch(0.97 0.01 50);
+  --sand-200: oklch(0.95 0.02 50);
+  --sand-300: oklch(0.92 0.03 50);
+  --sand-400: oklch(0.88 0.04 50);
+  /* this finishes where 500 normally would go dark */
+
+  @supports not (color: oklch(0.97 0.01 50)) {
+    --sand-100: #fbf3ef;
+    --sand-200: #faebe3;
+    --sand-300: #f6dfd3;
+    --sand-400: #eed1c1;
+  }
+
+  --pine-100: oklch(0.97 0.03 170);
+  --pine-200: oklch(0.9 0.04 170);
+  --pine-300: oklch(0.83 0.055 170);
+  --pine-400: oklch(0.7 0.08 170);
+  --pine-500: oklch(0.45 0.085 170);
+  --pine-600: oklch(0.35 0.065 170);
+  --pine-700: oklch(0.25 0.05 170);
+  --pine-800: oklch(0.2 0.035 170);
+
   /*------------------*/
   /* #WIDTHS */
   /* https://en.wikipedia.org/wiki/Largest_living_flying_birds_by_wingspan */
@@ -25,6 +61,16 @@
   /*------------------------------------*/
   /* #TYPOGRAPHY */
   /*------------------------------------*/
+  /* 🏔 7 Summits */
+  /* linear scale */
+  --everest: 3rem; /* 29,035ft Asia */
+  --aconcagua: 2.5rem; /* 22,840ft South America */
+  --denali: 2rem; /* 20,320ft North America */
+  --kilimanjaro: 1.5rem; /* 19,340ft Africa */
+  --elbrus: 1.25rem; /* 18,510ft Europe / Russia */ /* * baseline */
+  --vinson: 1rem; /* 16,050ft Antartica */
+  --kosciuszko: 0.75rem; /* 7,310ft Australia */
+
   --font-serif: "Bodoni Moda Variable", serif;
   --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";

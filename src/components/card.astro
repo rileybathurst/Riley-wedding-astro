@@ -1,22 +1,25 @@
 ---
-import { Image } from "astro:assets";
 const { title, excerpt, link, image, imageAlt, imageWidth, imageHeight } =
   Astro.props;
+
+import { Image } from "astro:assets";
 ---
 
 <article class="card">
-  {
-    image ? (
-      <Image
-        src={image}
-        width={imageWidth || 1200}
-        height={imageHeight || 600}
-        alt={imageAlt || title}
-      />
-    ) : null
-  }
   <a href={link} class="serif">
-    {title}
+    {
+      image ? (
+        <Image
+          src={image}
+          width={imageWidth || 1200}
+          height={imageHeight || 600}
+          alt={imageAlt || title}
+        />
+      ) : null
+    }
+    <h3>
+      {title}
+    </h3>
+    <p>{excerpt}</p>
   </a>
-  <p>{excerpt}</p>
 </article>

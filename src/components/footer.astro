@@ -7,14 +7,13 @@ const meta = await fetchApi<metaTypes>({
 });
 ---
 
-<footer class="condor">
-  <hr />
-  <p>
-    <a href="/">{meta.name} {meta.title}</a>
-  </p>
-  <a href={`mailto:${meta.email}@${meta.url}`}>
-    {meta.email}@{meta.url}
-  </a>
+<footer class="stork">
+  <h3 class="serif">Contact</h3>
+  <h4>
+    <a href={`mailto:${meta.email}@${meta.url}`}>
+      {meta.email}@{meta.url}
+    </a>
+  </h4>
   <form
     name="contact"
     data-netlify="true"
@@ -49,11 +48,15 @@ const meta = await fetchApi<metaTypes>({
     </label>
 
     <p class="sr-only">
-      <label>
+      <label class="sr-only">
         Don&#39;t fill this out if you&#39;re human:
         <input name="bot-field" />
       </label>
     </p>
     <button type="submit">Send</button>
   </form>
+  <p class="kilimanjaro-margin-block-end inline-block">
+    <a href="/">{meta.name} {meta.title} </a>
+    {new Date().getFullYear()}
+  </p>
 </footer>

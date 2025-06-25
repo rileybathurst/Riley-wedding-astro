@@ -13,3 +13,14 @@ ol {
     margin-right: 1rem;
   }
 }
+
+/*------------------------------------*/
+/* #BREADCRUMBS */
+/*------------------------------------*/
+
+.breadcrumbs {
+  padding-block: 1rem;
+  background-color: var(--pine-200);
+  box-shadow: 0 0 0 100vmax var(--pine-200);
+  clip-path: inset(0 -100vmax);
+}
