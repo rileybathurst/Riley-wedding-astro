@@ -18,9 +18,6 @@ const couples = await fetchApi<CoupleCardTypes[]>({
 <Wrapper>
   <Header />
   <main>
-    <h3 class="condor">
-      <a href="/couples">Couples</a>
-    </h3>
     <Deck cards={couples} />
   </main>
   <Footer />

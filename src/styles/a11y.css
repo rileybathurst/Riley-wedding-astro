@@ -1,0 +1,17 @@
+/*------------------------------------*/
+/* #A11Y */
+/*------------------------------------*/
+
+.sr-only {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* TODO: still not sorted */
+form .sr-only label {
+  height: 0;
+  margin: 0;
+  padding: 0;
+  display: block;
+}

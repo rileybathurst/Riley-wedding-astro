@@ -15,4 +15,45 @@ const meta = await fetchApi<metaTypes>({
   <a href={`mailto:${meta.email}@${meta.url}`}>
     {meta.email}@{meta.url}
   </a>
+  <form
+    name="contact"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    method="POST"
+    action="/form-success"
+    class="stork"
+  >
+    <input type="hidden" name="form-name" value="contact" />
+
+    <input
+      type="hidden"
+      name="subject"
+      value={`Contact Form from  ${meta.name}`}
+    />
+
+    <label
+      >Name
+      <input type="text" name="name" />
+    </label>
+    <label
+      >Email
+      <input type="email" name="email" />
+    </label>
+    <label
+      >Phone
+      <input type="tel" name="tel" />
+    </label>
+    <label
+      >Message
+      <textarea name="message"></textarea>
+    </label>
+
+    <p class="sr-only">
+      <label>
+        Don&#39;t fill this out if you&#39;re human:
+        <input name="bot-field" />
+      </label>
+    </p>
+    <button type="submit">Send</button>
+  </form>
 </footer>

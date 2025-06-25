@@ -1,0 +1,19 @@
+/*------------------------------------*/
+/* #FORMS */
+/*------------------------------------*/
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+  }
+
+  label {
+    font-family: var(--font-serif);
+  }
+}
