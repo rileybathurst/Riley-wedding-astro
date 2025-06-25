@@ -5,12 +5,16 @@ const { title, excerpt, link, image, imageAlt, imageWidth, imageHeight } =
 ---
 
 <article class="card">
-  <Image
-    src={image}
-    width={imageWidth || 1200}
-    height={imageHeight || 600}
-    alt={imageAlt || title}
-  />
+  {
+    image ? (
+      <Image
+        src={image}
+        width={imageWidth || 1200}
+        height={imageHeight || 600}
+        alt={imageAlt || title}
+      />
+    ) : null
+  }
   <a href={link}>
     {title}
   </a>

@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@fontsource-variable/bodoni-moda": "^5.2.6",
+    "@mux/mux-player": "^3.5.0",
     "astro": "^5.10.1",
     "qs": "^6.14.0"
   },

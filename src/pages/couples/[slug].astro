@@ -11,7 +11,9 @@ type CoupleTypes = {
   bride: string;
   groom: string;
   slug: string;
-  hero: {
+  title?: string;
+  mux?: string;
+  hero?: {
     url: string;
     alternativeText: string;
     width?: number;
@@ -23,6 +25,8 @@ export async function getStaticPaths() {
     endpoint: "couples",
     populate: {
       hero: true,
+      // title: true,
+      // mux: true, // assuming mux is a boolean field in the couple content type
     },
   });
 
@@ -46,6 +50,8 @@ const couple = Astro.props;
 };
 console.log(check);
 console.log(qs.stringify(check, { encode: false })); */
+
+console.log(couple);
 ---
 
 <Wrapper
@@ -55,19 +61,27 @@ console.log(qs.stringify(check, { encode: false })); */
 >
   <Header />
   <main class="pelican">
-    <Image
+    {couple.mux ?
+    <mux-player playback-id={couple.mux}></mux-player>
+    <script>
+      import "@mux/mux-player";
+    </script>
+    : 
+    couple.hero &&
+      <Image
       src={couple.hero.url}
       width={couple.hero.width || 1200}
       height={couple.hero.height || 600}
-      alt=`${couple.hero.alternativeText} | ${couple.bride}`
+      alt={`${couple.hero.alternativeText} | ${couple.bride}`}
     />
+    }
 
-    {couple.bride} & {couple.groom}
+    <h1>{couple.title ? couple.title : `${couple.bride} & ${couple.groom}`}</h1>
   </main>
   <Breadcrumbs
     items={[
       { label: "Couples", href: "/couples" },
-      { label: `${couple.bride} & ${couple.groom}` },
+      { label: couple.title ? couple.title : `${couple.bride} & ${couple.groom}` },
     ]}
   />
   <Footer />

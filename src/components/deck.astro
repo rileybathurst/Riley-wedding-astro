@@ -9,7 +9,7 @@ import type { CoupleCardTypes } from "../types/couple-card-types";
     cards.map((card: CoupleCardTypes) => (
       <Card
         id={card.id}
-        title={card.bride + " & " + card.groom}
+        title={card.title ? card.title : card.bride + " & " + card.groom}
         excerpt={card.excerpt}
         link={`/couples/${card.slug}`}
         image={card.hero?.url || ""}
