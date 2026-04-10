@@ -10,19 +10,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^4.3.0",
+    "@astrojs/react": "^5.0.3",
     "@fontsource-variable/bodoni-moda": "^5.2.6",
     "@mux/mux-player": "^3.5.0",
     "@strapi/blocks-react-renderer": "^1.0.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "astro": "^5.10.1",
+    "astro": "^6.1.5",
     "qs": "^6.14.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.0.5",
     "@types/qs": "^6.14.0"
   }
 }

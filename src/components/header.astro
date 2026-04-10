@@ -5,6 +5,7 @@ import type { metaTypes } from "../types/meta-types";
 const meta = await fetchApi<metaTypes>({
   endpoint: "meta", // the content type to fetch
 });
+
 /** Main menu items */
 const textLinks: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
@@ -98,7 +99,7 @@ const isCurrentPage = (href: string) => {
           };
 
           // Toggle menu visibility when the menu button is clicked.
-          btn.addEventListener("click", () => setExpanded(menu.hidden));
+          btn.addEventListener("click", () => setExpanded(!menu.hidden));
 
           // Hide menu button for large screens.
           const handleViewports = (e: MediaQueryList | MediaQueryListEvent) => {

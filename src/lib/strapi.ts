@@ -1,3 +1,5 @@
+
+
 interface Props {
   endpoint: string;
   query?: Record<string, string>;
@@ -21,7 +23,7 @@ export default async function fetchApi<T>({
   }
 
   // this is the format I need
-  // http://45.79.101.19:1347/api/couples?populate[1]=hero&populate[2]=collaborators
+  // import.meta.env.STRAPI_URL/api/couples?populate[1]=hero&populate[2]=collaborators
   // console.log(qs.stringify(populate));
 
   // Convert populate object to array query string: populate[1]=hero&populate[2]=collaborators
@@ -41,7 +43,7 @@ export default async function fetchApi<T>({
     }`
   );
 
-  console.log(url.href);
+  // console.log(url.href);
 
   if (query) {
     Object.entries(query).forEach(([key, value]) => {

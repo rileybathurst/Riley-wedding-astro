@@ -20,6 +20,14 @@ type CoupleTypes = {
     width?: number;
     height?: number;
   };
+  gallery?: {
+    image: {
+      url: string;
+      alternativeText: string;
+      width?: number;
+      height?: number;
+    }[];
+  };
   collaborators?: collaboratorLinkTypes[];
 };
 export async function getStaticPaths() {
@@ -27,6 +35,7 @@ export async function getStaticPaths() {
     endpoint: "couples",
     populate: {
       hero: true,
+      gallery: true,
       collaborators: true,
     },
   });
@@ -52,7 +61,7 @@ const couple = Astro.props;
 // console.log(check);
 // console.log(qs.stringify(check, { encode: false })); */
 
-// console.log(couple);
+console.log(couple);
 ---
 
 <Wrapper
@@ -80,6 +89,16 @@ const couple = Astro.props;
     <h1 class="serif">{couple.title ? couple.title : `${couple.bride} & ${couple.groom}`}</h1>
 
     <hr />
+
+    {couple.gallery &&
+      couple.gallery.map((image) => (
+        <Image
+          src={image.url}
+          width={image.width || 1200}
+          height={image.height || 600}
+          alt={`${image.alternativeText} | ${couple.bride} & ${couple.groom}`}
+          />
+      ))}
 
     {couple.collaborators && couple.collaborators.length > 0 && (
       <div class="collaborators">
