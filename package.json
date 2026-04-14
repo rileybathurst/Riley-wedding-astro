@@ -4,12 +4,14 @@
   "version": "0.0.1",
   "author": "Riley Bathurst <riley@rileybathurst.com> (https://rileybathurst.com)",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro check && stay-gold && astro dev",
+    "dirty": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.8",
     "@astrojs/react": "^5.0.3",
     "@fontsource-variable/bodoni-moda": "^5.2.6",
     "@mux/mux-player": "^3.5.0",
@@ -19,7 +21,9 @@
     "astro": "^6.1.5",
     "qs": "^6.14.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "stay-gold": "^1.1.9",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@types/qs": "^6.14.0"

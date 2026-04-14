@@ -12,6 +12,12 @@ import { Image } from "astro:assets";
 
 type aboutTypes = {
   bio: BlocksContent;
+  avatar: {
+    url: string;
+    width: number;
+    height: number;
+    alternativeText: string;
+  };
 };
 const about = await fetchApi<aboutTypes>({
   endpoint: "about",

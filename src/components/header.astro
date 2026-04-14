@@ -25,11 +25,13 @@ const isCurrentPage = (href: string) => {
 <header>
   <h1 class="serif">
     <h1 class="condor serif">
-      <a href="/">
+      <a href="/"
+        class="highlight"
+      >
         {meta.name}
       </a>
     </h1>
-    <h2 class="condor">{meta.title}</h2>
+    <h2 class="condor serif">{meta.title}</h2>
 
     <nav>
       <div class="menu-header">
@@ -46,7 +48,7 @@ const isCurrentPage = (href: string) => {
               <li>
                 <a
                   aria-current={isCurrentPage(href) ? "page" : null}
-                  class="link"
+                  class="link serif"
                   href={href}
                 >
                   {label}
@@ -63,7 +65,7 @@ const isCurrentPage = (href: string) => {
               <li>
                 <a
                   aria-current={isCurrentPage(href) ? "page" : null}
-                  class="link"
+                  class="link serif"
                   href={href}
                 >
                   {label}

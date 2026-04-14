@@ -195,3 +195,19 @@ form {
 .zero-padding-block-end {
   padding-block-end: 0;
 }
+
+/*------------------------------------*/
+/* #GALLERY */
+/*------------------------------------*/
+
+.gallery {
+  gap: var(--vinson);
+  display: flex;
+  flex-flow: row wrap;
+
+  @supports (display: grid-lanes) {
+    display: grid-lanes;
+    grid-template-columns: repeat(auto-fit, minmax(var(--stork), 1fr));
+  }
+
+}

@@ -12,6 +12,8 @@ type collaboratorTypes = {
   name: string;
   slug: string;
   couples: CoupleCardTypes[];
+  excerpt: string;
+  website: string;
 };
 export async function getStaticPaths() {
   const collaborators = await fetchApi<collaboratorTypes[]>({
@@ -40,9 +42,9 @@ const collaborator = Astro.props;
     <p>{collaborator.excerpt}</p>
     <p>
       <!-- TODO: tidy up the links to remoeve the https -->
-      <a href={collaborator.website} target="_blank" noref=""
-        >{collaborator.website}</a
-      >
+      <a href={collaborator.website} target="_blank" rel="noopener noreferrer">
+        {collaborator.website}
+      </a>
     </p>
     <hr />
   </main>
@@ -52,7 +54,10 @@ const collaborator = Astro.props;
 
   <Breadcrumbs
     items={[
-      { label: "Collaborator", href: "/collaborator" },
+      {
+        label: "Collaborator", 
+        href: "/collaborator"
+      },
       {
         label: collaborator.name,
       },

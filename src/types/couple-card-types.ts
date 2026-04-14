@@ -11,4 +11,5 @@ export type CoupleCardTypes = {
     width: number;
     height: number;
   };
+  mux?: string;
 };

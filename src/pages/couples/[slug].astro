@@ -1,5 +1,4 @@
 ---
-// TODO: collaborator
 import fetchApi from "../../lib/strapi";
 import Wrapper from "../../components/wrapper.astro";
 import Header from "../../components/header.astro";
@@ -21,13 +20,11 @@ type CoupleTypes = {
     height?: number;
   };
   gallery?: {
-    image: {
-      url: string;
-      alternativeText: string;
-      width?: number;
-      height?: number;
-    }[];
-  };
+    url: string;
+    alternativeText: string;
+    width?: number;
+    height?: number;
+  }[];
   collaborators?: collaboratorLinkTypes[];
 };
 export async function getStaticPaths() {
@@ -47,21 +44,7 @@ export async function getStaticPaths() {
 }
 const couple = Astro.props;
 
-// * this still might need more but for now its working
-// http://45.79.101.19:1347/api/couples?populate=hero
 // console.log(couple);
-
-// qs.stringify({ a: 'b' }), 'a=b'
-
-/* const check = {
-  populate: {
-    hero: true,
-  },
-};
-// console.log(check);
-// console.log(qs.stringify(check, { encode: false })); */
-
-console.log(couple);
 ---
 
 <Wrapper
@@ -70,54 +53,64 @@ console.log(couple);
   }}
 >
   <Header />
-  <main class="pelican">
-    {couple.mux ?
-    <mux-player playback-id={couple.mux}></mux-player>
-    <script>
-      import "@mux/mux-player";
-    </script>
-    : 
-    couple.hero &&
-      <Image
-      src={couple.hero.url}
-      width={couple.hero.width || 1200}
-      height={couple.hero.height || 600}
-      alt={`${couple.hero.alternativeText} | ${couple.bride}`}
-    />
-    }
 
-    <h1 class="serif">{couple.title ? couple.title : `${couple.bride} & ${couple.groom}`}</h1>
+  <h1 class="serif center pelican">
+    {couple.title ? couple.title : `${couple.bride} & ${couple.groom}`}
+  </h1>
 
-    <hr />
-
-    {couple.gallery &&
-      couple.gallery.map((image) => (
-        <Image
-          src={image.url}
-          width={image.width || 1200}
-          height={image.height || 600}
-          alt={`${image.alternativeText} | ${couple.bride} & ${couple.groom}`}
+  {
+    couple.mux ? (
+      <main class="pelican">
+        <mux-player playback-id={couple.mux} />
+        <script>import "@mux/mux-player";</script>
+      </main>
+    ) : (
+      couple.hero && (
+        <main class="gallery">
+          <Image
+            src={couple.hero.url}
+            width={couple.hero.width || 1200}
+            height={couple.hero.height || 600}
+            alt={`${couple.hero.alternativeText} | ${couple.bride}`}
           />
-      ))}
 
-    {couple.collaborators && couple.collaborators.length > 0 && (
+          {couple.gallery &&
+            couple.gallery.map((image) => (
+              <Image
+                src={image.url}
+                width={image.width || 1200}
+                height={image.height || 600}
+                alt={`${image.alternativeText} | ${couple.bride} & ${couple.groom}`}
+              />
+            ))}
+        </main>
+      )
+    )
+  }
+
+  <hr />
+
+  {
+    couple.collaborators && couple.collaborators.length > 0 && (
       <div class="collaborators">
-        <h2>Collaborators</h2>
+        <h2 class="serif">Collaborators</h2>
         <ul>
           {couple.collaborators.map((collab) => (
-            <li key={collab.id}>
-              <a href={`/collaborators/${collab.slug}`}>{collab.name}</a>
+            <li>
+              <a href={`/collaborators/${collab.slug}`} class="serif">{collab.name}</a>
             </li>
           ))}
         </ul>
       </div>
-    )}
-  </main>
-  <Breadcrumbs
-    items={[
-      { label: "Couples", href: "/couples" },
-      { label: couple.title ? couple.title : `${couple.bride} & ${couple.groom}` },
-    ]}
-  />
-  <Footer />
+    )
+  }
 </Wrapper>
+<Breadcrumbs
+  items={[
+    { label: "Couples", href: "/couples" },
+    {
+      label: couple.title ? couple.title : `${couple.bride} & ${couple.groom}`,
+    },
+  ]}
+/>
+<Footer />
