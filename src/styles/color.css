@@ -3,9 +3,9 @@
 /*------------------------------------*/
 
 footer {
-  background-color: var(--pine-100);
-  box-shadow: 0 0 0 100vmax var(--pine-100);
-  clip-path: inset(0 -100vmax);
+  /* background-color: var(--pine-100); */
+  /* box-shadow: 0 0 0 100vmax var(--pine-100); */
+  /* clip-path: inset(0 -100vmax); */
   color: var(--pine-700);
 
   button {

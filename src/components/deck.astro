@@ -4,18 +4,20 @@ const { cards } = Astro.props;
 import type { CoupleCardTypes } from "../types/couple-card-types";
 ---
 
-<section class="deck cloud pelican">
+<section class="deck">
   {
     cards.map((card: CoupleCardTypes) => (
       <Card
         id={card.id}
         title={card.title ? card.title : card.bride + " & " + card.groom}
+        header={card.title ? card.title : card.bride}
+        footer={card.groom}
         excerpt={card.excerpt}
         link={`/couples/${card.slug}`}
         image={card.hero?.url || ""}
         imageAlt={card.hero?.alternativeText || ""}
-        imageWidth={card.hero?.width || 1200}
-        imageHeight={card.hero?.height || 600}
+        // imageWidth={card.hero?.width || 1200}
+        // imageHeight={card.hero?.height || 600}
         mux={card.mux ? card.mux : null}
       />
     ))

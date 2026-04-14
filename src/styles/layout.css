@@ -23,8 +23,8 @@
   width: var(--condor);
 }
 
-.pelican,
-.deck {
+/* .deck { */
+.pelican {
   width: var(--pelican);
 }
 
@@ -204,6 +204,10 @@ form {
   gap: var(--vinson);
   display: flex;
   flex-flow: row wrap;
+
+  > * {
+    flex: 1 1 var(--stork);
+  }
 
   @supports (display: grid-lanes) {
     display: grid-lanes;

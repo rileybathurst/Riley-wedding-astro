@@ -21,3 +21,8 @@ a.highlight {
 a.highlight:hover {
   background: var(--pine-100);
 }
+
+/* has to be here */
+a.card {
+  text-decoration: none;
+}
