@@ -207,13 +207,27 @@ form {
 
   > * {
     flex: 0 1 var(--vulture);
-    cursor: pointer;
+    /* transition: all 3s ease-in-out; doesnt work */
   }
 
-  &.gallery--masonry > * {
+  button {
+    transition: all 3s ease-in-out;
+    background: var(--sand-200);
+    border: 5px solid var(--sand-200);
+    padding: 0;
+  }
+
+  .gallery-item:hover {
+    cursor: zoom-in;
+    background: var(--sand-400);
+    border: 5px solid var(--sand-400);
+  }
+
+  &.gallery--masonry>* {
     margin-block-end: var(--vinson);
   }
 
+  /* * remove when grid lanes are baseline */
   @supports not (display: grid-lanes) {
     img {
       max-width: 12rem;
@@ -227,10 +241,19 @@ form {
 
   .selected {
     grid-column: span var(--gallery-column-count, 1);
+
     justify-self: center;
-    max-width: 100%;
-    max-height: 100vh;
-    width: auto;
-    height: auto;
+
+    img {
+      max-width: 100%;
+      max-height: 100vh;
+      width: auto;
+      height: auto;
+    }
   }
+
+  .selected:hover {
+    cursor: zoom-out;
+  }
+
 }

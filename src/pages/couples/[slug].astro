@@ -65,23 +65,25 @@ const couple = Astro.props;
     ) : (
       couple.hero && (
         <main class="gallery">
-          <Image
-            class="gallery-item"
-            src={couple.hero.url}
-            width={couple.hero.width || 1200}
-            height={couple.hero.height || 600}
-            alt={`${couple.hero.alternativeText} | ${couple.bride}`}
-          />
+          <button class="gallery-item" type="button">
+            <Image
+              src={couple.hero.url}
+              width={couple.hero.width || 1200}
+              height={couple.hero.height || 600}
+              alt={`${couple.hero.alternativeText} | ${couple.bride}`}
+            />
+          </button>
 
           {couple.gallery &&
             couple.gallery.map((image) => (
-              <Image
-                class="gallery-item"
-                src={image.url}
-                width={image.width || 1200}
-                height={image.height || 600}
-                alt={`${image.alternativeText} | ${couple.bride} & ${couple.groom}`}
-              />
+              <button class="gallery-item" type="button">
+                <Image
+                  src={image.url}
+                  width={image.width || 1200}
+                  height={image.height || 600}
+                  alt={`${image.alternativeText} | ${couple.bride} & ${couple.groom}`}
+                />
+              </button>
             ))}
         </main>
       )
@@ -97,7 +99,9 @@ const couple = Astro.props;
         <ul>
           {couple.collaborators.map((collab) => (
             <li>
-              <a href={`/collaborators/${collab.slug}`} class="serif">{collab.name}</a>
+              <a href={`/collaborators/${collab.slug}`} class="serif">
+                {collab.name}
+              </a>
             </li>
           ))}
         </ul>

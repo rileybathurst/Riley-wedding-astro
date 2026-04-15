@@ -74,4 +74,10 @@
   --font-serif: "Bodoni Moda Variable", serif;
   --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
+
+    /*------------------------------------*/
+    /* #TRANSITIONS */
+    /*------------------------------------*/
+    --transition-all: all 0.2s ease;
+
+  }

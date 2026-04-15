@@ -26,3 +26,10 @@ a.highlight:hover {
 a.card {
   text-decoration: none;
 }
+
+/* * reset */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+}

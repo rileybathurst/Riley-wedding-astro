@@ -15,13 +15,13 @@ https://developer.chrome.com/docs/web-platform/view-transitions/cross-document *
   .card {
     display: grid;
     border: 6px solid var(--sand-200);
-      transition: all 0.2s ease;
+      transition: var(--transition-all);
     background-color: var(--sand-200);
 
     > * {
       grid-column: 1;
       grid-row: 1;
-      transition: all 0.2s ease;
+      transition: var(--transition-all);
     }
 
     .header,
@@ -31,10 +31,6 @@ https://developer.chrome.com/docs/web-platform/view-transitions/cross-document *
       font-size: var(--aconcagua);
       text-align: center;
       z-index: 3;
-    }
-
-    .header {
-
     }
 
     .footer {
