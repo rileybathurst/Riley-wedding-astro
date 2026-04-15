@@ -43,8 +43,6 @@ export async function getStaticPaths() {
   }));
 }
 const couple = Astro.props;
-
-// console.log(couple);
 ---
 
 <Wrapper
@@ -68,6 +66,7 @@ const couple = Astro.props;
       couple.hero && (
         <main class="gallery">
           <Image
+            class="gallery-item"
             src={couple.hero.url}
             width={couple.hero.width || 1200}
             height={couple.hero.height || 600}
@@ -77,6 +76,7 @@ const couple = Astro.props;
           {couple.gallery &&
             couple.gallery.map((image) => (
               <Image
+                class="gallery-item"
                 src={image.url}
                 width={image.width || 1200}
                 height={image.height || 600}
@@ -114,3 +114,61 @@ const couple = Astro.props;
   ]}
 />
 <Footer />
+
+<script>
+  import Masonry from "masonry-layout";
+
+  const gallery = document.querySelector<HTMLElement>(".gallery");
+  const supportsGridLanes = CSS.supports("display", "grid-lanes");
+  let masonry: Masonry | undefined;
+
+  const updateSelectedSpan = () => {
+    if (!gallery || !supportsGridLanes) {
+      return;
+    }
+
+    const gridTemplateColumns = getComputedStyle(gallery).gridTemplateColumns;
+
+    if (!gridTemplateColumns || gridTemplateColumns === "none") {
+      return;
+    }
+
+    const columnCount = gridTemplateColumns.split(" ").filter(Boolean).length;
+
+    gallery.style.setProperty("--gallery-column-count", String(columnCount));
+  };
+
+  if (gallery && !supportsGridLanes) {
+    const galleryStyles = getComputedStyle(gallery);
+    const gap = parseFloat(galleryStyles.rowGap || galleryStyles.gap) || 16;
+
+    gallery.classList.add("gallery--masonry");
+
+    masonry = new Masonry(gallery, {
+      itemSelector: ".gallery-item",
+      gutter: gap,
+      percentPosition: true,
+    });
+  }
+
+  updateSelectedSpan();
+  window.addEventListener("resize", updateSelectedSpan);
+
+  gallery?.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (!(target instanceof HTMLElement)) {
+      return;
+    }
+
+    const image = target.closest(".gallery-item");
+
+    if (!(image instanceof HTMLElement)) {
+      return;
+    }
+
+    image.classList.toggle("selected");
+    updateSelectedSpan();
+    masonry?.layout();
+  });
+</script>
