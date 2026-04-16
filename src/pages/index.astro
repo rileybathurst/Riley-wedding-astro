@@ -9,6 +9,9 @@ import type { CoupleCardTypes } from "../types/couple-card-types";
 
 const couples = await fetchApi<CoupleCardTypes[]>({
   endpoint: "couples", // the content type to fetch
+  query: {
+    "sort[0]": "id:desc",
+  },
   populate: {
     hero: true, // populate the image field
   },

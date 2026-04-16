@@ -15,13 +15,13 @@ https://developer.chrome.com/docs/web-platform/view-transitions/cross-document *
   .card {
     display: grid;
     border: 6px solid var(--sand-200);
-      transition: var(--transition-all);
+      transition: var(--moment);
     background-color: var(--sand-200);
 
     > * {
       grid-column: 1;
       grid-row: 1;
-      transition: var(--transition-all);
+      transition: var(--moment);
     }
 
     .header,
@@ -48,9 +48,9 @@ https://developer.chrome.com/docs/web-platform/view-transitions/cross-document *
 
 .card:hover {
   img {
-    /* transform: scale(0.95); */
     filter: blur(1px);
   }
+
   .overlay {
     opacity: 0;
   }

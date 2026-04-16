@@ -46,11 +46,14 @@ const collaborator = Astro.props;
         {collaborator.website}
       </a>
     </p>
-    <hr />
   </main>
 
   <!-- TODO: this isnt bringing images as thats a double nested but thats fine for now -->
-  {collaborator.couples && <Deck cards={collaborator.couples} />}
+  {collaborator.couples && (
+    <hr />
+  <Deck cards={collaborator.couples} />
+)
+  }
 
   <Breadcrumbs
     items={[
