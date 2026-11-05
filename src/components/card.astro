@@ -1,6 +1,15 @@
 ---
-const { title, excerpt, link, image, imageAlt, imageWidth, imageHeight, mux, header, footer } =
-  Astro.props;
+const {
+  title,
+  link,
+  image,
+  imageAlt,
+  imageWidth,
+  imageHeight,
+  mux,
+  header,
+  footer,
+} = Astro.props;
 
 import { Image } from "astro:assets";
 ---
@@ -10,10 +19,10 @@ import { Image } from "astro:assets";
     {
       mux && (
         <Image
-          // src={`https://image.mux.com/${mux}/thumbnail.jpg?width=400&height=300&fit_mode=pad`}
+          src={`https://image.mux.com/${mux}/thumbnail.jpg?width=400&height=300&fit_mode=pad`}
           src={`https://image.mux.com/${mux}/thumbnail.jpg`}
-          // width={400}
-          // height={300}
+          width={400}
+          height={300}
           alt={`${title} video thumbnail`}
         />
       )
@@ -28,8 +37,8 @@ import { Image } from "astro:assets";
             return (
               <Image
                 src={newImage}
-                // width={imageWidth || 1200}
-                // height={imageHeight || 600}
+                width={imageWidth || 1200}
+                height={imageHeight || 600}
                 alt={imageAlt || title}
               />
             );
@@ -37,12 +46,8 @@ import { Image } from "astro:assets";
         : null
     }
 
-    <!-- <h3>
-      {title}
-    </h3> -->
     <h3 class="header">{header}</h3>
     <h3 class="footer">{footer}</h3>
-    <!-- <p>{excerpt}</p> -->
     <div class="overlay">{/* stay gold */}</div>
   </a>
 </article>

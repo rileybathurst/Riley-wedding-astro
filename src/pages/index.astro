@@ -16,6 +16,19 @@ const couples = await fetchApi<CoupleCardTypes[]>({
     hero: true, // populate the image field
   },
 });
+
+// * finding focal points work here for astro
+/* console.log(
+  couples.map((c, i) => ({
+    i,
+    slug: c.slug,
+    hasHero: !!c.hero,
+    hasFocalPoint: !!c.hero?.focalPoint,
+    focalPoint: c.hero?.focalPoint,
+    focalPointX: c.hero?.focalPoint?.x,
+    focalPointY: c.hero?.focalPoint?.y,
+  })),
+); */
 ---
 
 <Wrapper>

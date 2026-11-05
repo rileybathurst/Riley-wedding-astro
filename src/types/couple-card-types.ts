@@ -10,6 +10,10 @@ export type CoupleCardTypes = {
     alternativeText: string;
     width: number;
     height: number;
+    focalPoint: {
+      x: number;
+      y: number;
+    };
   };
   mux?: string;
 };

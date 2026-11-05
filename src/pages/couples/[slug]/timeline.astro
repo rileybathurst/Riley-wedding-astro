@@ -1,0 +1,71 @@
+---
+// TODO: this would need a login
+// its interesting and then using it to save to strapi through api makes it something worth doing
+
+import fetchApi from "../../../lib/strapi";
+import Wrapper from "../../../components/wrapper.astro";
+import Header from "../../../components/header.astro";
+import Footer from "../../../components/footer.astro";
+import Breadcrumbs from "../../../components/breadcrumbs.astro";
+import { Image } from "astro:assets";
+import type { collaboratorLinkTypes } from "../../../types/collaborator-link-types";
+
+type CoupleTypes = {
+  bride: string;
+  groom: string;
+  slug: string;
+  title?: string;
+  mux?: string;
+  hero?: {
+    url: string;
+    alternativeText: string;
+    width?: number;
+    height?: number;
+  };
+  gallery?: {
+    url: string;
+    alternativeText: string;
+    width?: number;
+    height?: number;
+  }[];
+  collaborators?: collaboratorLinkTypes[];
+};
+export async function getStaticPaths() {
+  const couples = await fetchApi<CoupleTypes[]>({
+    endpoint: "couples",
+    populate: {
+      hero: true,
+      gallery: true,
+      collaborators: true,
+    },
+  });
+
+  return couples.map((couple) => ({
+    params: { slug: couple.slug },
+    props: couple,
+  }));
+}
+const couple = Astro.props;
+---
+
+<Wrapper
+  seo={{
+    title: `${couple.bride} & ${couple.groom}`,
+  }}
+>
+  <Header />
+
+  <h1 class="serif center pelican">
+    {couple.title ? couple.title : `${couple.bride} & ${couple.groom}`}
+  </h1>
+  timeline
+</Wrapper>
+<Breadcrumbs
+  items={[
+    { label: "Couples", href: "/couples" },
+    {
+      label: couple.title ? couple.title : `${couple.bride} & ${couple.groom}`,
+    },
+  ]}
+/>
+<Footer />

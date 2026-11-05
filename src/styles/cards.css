@@ -6,7 +6,8 @@ https://developer.chrome.com/docs/web-platform/view-transitions/cross-document *
 } */
 
 .deck {
-  display: grid-lanes;
+  /* Baseline layout for browsers without grid-lanes support. */
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(var(--vulture) * 1.4)), calc(var(--vulture) * 1.8)));
   justify-content: center;
   gap: 1rem;
@@ -43,6 +44,12 @@ https://developer.chrome.com/docs/web-platform/view-transitions/cross-document *
       z-index: 2;
       mix-blend-mode: overlay;
     }
+  }
+}
+
+@supports (display: grid-lanes) {
+  .deck {
+    display: grid-lanes;
   }
 }
 
